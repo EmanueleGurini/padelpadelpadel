@@ -10,7 +10,14 @@ import {
 import * as ROUTES from './constants/routes'
 
 import Navigation from './components/Navigation/Navigation';
+
 import Home from './components/Home/Home';
+import Landing from './components/Landing/Landing';
+import SignUp from './components/SignUp/SignUp';
+import SignIn from './components/SignIn/SignIn';
+import PasswordForget from './components/PasswordForget/PasswordForget';
+import Account from './components/Account/Account';
+import Admin from './components/Admin/Admin';
 
 function App() {
   return (
