@@ -8,7 +8,7 @@ interface IAccount {
 
 }
 
-export const Accunt: React.FC<IAccount> = ({
+export const Account: React.FC<IAccount> = ({
 	
 }) => {
 
