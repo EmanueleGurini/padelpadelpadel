@@ -5,10 +5,10 @@ import {
   Routes
 } from 'react-router-dom';
 
-import * as ROUTES from './constants/routes'
+import * as ROUTES from './constants/routes.tsx'
 
-import Navigation from './components/Navigation/Navigation';
-import Home from './components/Home/Home';
+import Navigation from './components/Navigation/Navigation.tsx';
+import Home from './components/Home/Home.tsx';
 
 function App() {
   return (
