@@ -1,4 +1,6 @@
+import React from 'react';
 import './App.module.css';
+
 import { 
   BrowserRouter as Router,
   Route,
@@ -17,7 +19,7 @@ function App() {
 
       <hr />
       <Routes>
-        <Route exact path={ROUTES.HOME} component={Home} />
+        <Route path={ROUTES.HOME} element={<Home />} />
       </Routes>
     </Router>
   );
