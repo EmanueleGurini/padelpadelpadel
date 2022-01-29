@@ -26,7 +26,11 @@ function App() {
 
       <hr />
       <Routes>
+        <Route path={ROUTES.SIGN_IN} element={<SignIn/>} />
+        <Route path={ROUTES.LANDING} element={<Landing />} />
         <Route path={ROUTES.HOME} element={<Home />} />
+        <Route path={ROUTES.ACCOUNT} element={<Account />} />
+        <Route path={ROUTES.ADMIN} element={<Admin/>} />
       </Routes>
     </Router>
   );
