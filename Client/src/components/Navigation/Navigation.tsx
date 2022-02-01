@@ -16,6 +16,17 @@ import { Link } from 'react-router-dom';
 
 import * as ROUTES from '../../constants/routes';
 
+const menuRoutes = [
+  { route: ROUTES.SIGN_IN, label : 'Sign In' },
+  { route: ROUTES.LANDING, label : 'Landing' },
+  { route: ROUTES.HOME, label : 'Home' },
+]
+
+const userRoutes = [
+  { route: ROUTES.ACCOUNT, label : 'Account' },
+  { route: ROUTES.ADMIN, label : 'Admin' },
+]
+
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -96,14 +107,15 @@ const Navigation = () => {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
+            {menuRoutes.map((route) => (
+              // <Button
+              //   key={page}
+              //   onClick={handleCloseNavMenu}
+              //   sx={{ my: 2, color: 'white', display: 'block' }}
+              // >
+              //   {page}
+              // </Button>
+              <Link to={route.route}>{route.label}</Link>
             ))}
           </Box>
 
@@ -129,9 +141,9 @@ const Navigation = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+              {userRoutes.map((route) => (
+                <MenuItem>
+                <Link to={route.route}>{route.label}</Link>
                 </MenuItem>
               ))}
             </Menu>
