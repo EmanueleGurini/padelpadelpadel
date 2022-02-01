@@ -2,6 +2,7 @@
   // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-app.js";
   // import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-analytics.js";
 	import app from 'firebase/compat/app';
+  import 'firebase/auth';
 
   const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -15,9 +16,31 @@
 
 
 	class Firebase {
+    public auth;
 		constructor() {
 			app.initializeApp(firebaseConfig);
+
+      this.auth = app.auth();
 		}
+      // *** Auth API ***
+      doCreateUserWithEmailAndPassword = (email : string, password : string) =>
+      this.auth.createUserWithEmailAndPassword(email, password);
+
+      
+      doSignInWithEmailAndPassword = (email : string, password : string) =>
+      this.auth.signInWithEmailAndPassword(email, password);
+
+      doSignOut = () => this.auth.signOut();
+
+      doPasswordReset = (email: string) => this.auth.sendPasswordResetEmail(email);
+
+      doPasswordUpdate = (password: string) => {
+        if (this.auth.currentUser) {
+          // use user safely here
+          this.auth.currentUser.updatePassword(password);
+        }
+      }
+
 	}
 	
 	export default Firebase;
