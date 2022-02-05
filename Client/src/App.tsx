@@ -21,7 +21,7 @@ import Admin from './components/Admin/Admin';
 
 function App() {
   return (
-    <Router>
+    <div>
       <Navigation />
 
       <hr />
@@ -31,8 +31,9 @@ function App() {
         <Route path={ROUTES.HOME} element={<Home />} />
         <Route path={ROUTES.ACCOUNT} element={<Account />} />
         <Route path={ROUTES.ADMIN} element={<Admin/>} />
+        <Route path={ROUTES.SIGN_UP} element={<SignUp/>} />
       </Routes>
-    </Router>
+    </div>
   );
 }
 
