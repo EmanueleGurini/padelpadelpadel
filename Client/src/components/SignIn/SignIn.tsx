@@ -6,7 +6,7 @@ import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 // import Link from '@mui/material/Link';
-import {Link} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -40,7 +40,8 @@ export default function SignIn() {
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState("");
 
-  const { signUp } = useUserAuth();
+  const { logIn } = useUserAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -54,7 +55,8 @@ export default function SignIn() {
     setError("");
     try{
 
-      await signUp(email, password)
+      await logIn(email, password)
+      navigate("/home");
 
     } catch (err : any) {
 

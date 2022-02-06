@@ -18,17 +18,29 @@ import SignIn from './components/SignIn/SignIn';
 import PasswordForget from './components/PasswordForget/PasswordForget';
 import Account from './components/Account/Account';
 import Admin from './components/Admin/Admin';
+import { ProtectedRoutes } from './components/ProtectedRoutes';
+import { useUserAuth } from './components/context/UseAuthContext';
 
 function App() {
+  let { user } = useUserAuth();
+  if(user){
+    console.log('user:',user)
+  }
   return (
     <div>
-      <Navigation />
-
-      <hr />
+      {user && <h1>test</h1>}
       <Routes>
         <Route path={ROUTES.SIGN_IN} element={<SignIn/>} />
-        <Route path={ROUTES.LANDING} element={<Landing />} />
-        <Route path={ROUTES.HOME} element={<Home />} />
+        <Route path={ROUTES.LANDING} element={<SignIn/>} />
+        {/* <Route path={ROUTES.HOME} element={<Home />} /> */}
+        <Route 
+          path={ROUTES.HOME}
+          element={
+            <ProtectedRoutes>
+              <Home />
+            </ProtectedRoutes>
+          } 
+        />
         <Route path={ROUTES.ACCOUNT} element={<Account />} />
         <Route path={ROUTES.ADMIN} element={<Admin/>} />
         <Route path={ROUTES.SIGN_UP} element={<SignUp/>} />

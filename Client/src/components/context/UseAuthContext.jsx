@@ -19,7 +19,7 @@ export function UserAuthContextProvider({children}) {
 	}
 
 	function logIn(email, password) {
-		return createUserWithEmailAndPassword(auth,email, password);
+		return signInWithEmailAndPassword(auth,email, password);
 	}
 
 	React.useEffect(() => {
@@ -33,7 +33,7 @@ export function UserAuthContextProvider({children}) {
 	}, []);
 
 	return (
-		<UserAuthContext.Provider value={{user, signUp}}>
+		<UserAuthContext.Provider value={{ user, signUp, logIn }}>
 			{ children }
 		</UserAuthContext.Provider>
 	)
