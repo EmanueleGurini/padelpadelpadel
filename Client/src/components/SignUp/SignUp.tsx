@@ -6,7 +6,7 @@ import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 // import Link from '@mui/material/Link';
-import {Link} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -14,6 +14,9 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import * as ROUTES from '../../constants/routes';
+import { useUserAuth } from '../context/UseAuthContext';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 
 
 function Copyright(props: any) {
@@ -32,7 +35,15 @@ function Copyright(props: any) {
 const theme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [error, setError] = React.useState("");
+
+  const { signUp } = useUserAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
@@ -40,6 +51,18 @@ export default function SignUp() {
       email: data.get('email'),
       password: data.get('password'),
     });
+
+    setError("");
+    try{
+
+      await signUp(email, password)
+      navigate("/");
+
+    } catch (err : any) {
+
+        setError(err.message)
+
+    }
   };
 
   return (
@@ -58,10 +81,9 @@ export default function SignUp() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign Up
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-						<h1>SignUP</h1>
             <TextField
               margin="normal"
               required
@@ -71,6 +93,7 @@ export default function SignUp() {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={(e) => {setEmail(e.target.value)}}
             />
             <TextField
               margin="normal"
@@ -81,18 +104,25 @@ export default function SignUp() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={(e) => {setPassword(e.target.value)}}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
+            { error && <Alert severity="error">
+              <AlertTitle>Error</AlertTitle>
+              {error}
+            </Alert> 
+            }
+
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              Sign Up
             </Button>
             <Grid container>
               <Grid item xs>
@@ -101,8 +131,8 @@ export default function SignUp() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link to={ROUTES.SIGN_UP}>
-                  {"Don't have an account? Sign Up"}
+                <Link to={ROUTES.SIGN_IN}>
+                  {"Do you have an account? Sign In"}
                 </Link>
               </Grid>
             </Grid>
