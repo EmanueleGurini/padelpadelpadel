@@ -3,7 +3,9 @@ import {
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
 	signOut,
-	onAuthStateChanged
+	onAuthStateChanged,
+	GoogleAuthProvider,
+	signInWithPopup
 } from 'firebase/auth'
 import { auth } from '../Firebase/firebase'
 
@@ -26,6 +28,11 @@ export function UserAuthContextProvider({children}) {
 		return signOut(auth);
 	}
 
+	function signInWithGoogle() {
+		const googleAuthProvider = new GoogleAuthProvider();
+		return signInWithPopup(auth, googleAuthProvider)
+	}
+
 	React.useEffect(() => {
 
 		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -37,7 +44,7 @@ export function UserAuthContextProvider({children}) {
 	}, []);
 
 	return (
-		<UserAuthContext.Provider value={{ user, signUp, logIn, logOut }}>
+		<UserAuthContext.Provider value={{ user, signUp, logIn, logOut , signInWithGoogle}}>
 			{ children }
 		</UserAuthContext.Provider>
 	)
