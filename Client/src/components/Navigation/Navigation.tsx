@@ -15,6 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
 
 import * as ROUTES from '../../constants/routes';
+import { useUserAuth } from '../context/UseAuthContext';
 
 const menuRoutes = [
   { route: ROUTES.SIGN_IN, label : 'Sign In' },
@@ -30,9 +31,12 @@ const userRoutes = [
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
+
 const Navigation = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+  
+  let { user, logOut } = useUserAuth();
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -48,6 +52,16 @@ const Navigation = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const handleLogOut = async () => {
+    try{
+      await logOut();
+    } catch(err : any) {
+      console.log(err.message)
+
+    }
+
+  }
 
   return (
     <AppBar position="static">
@@ -146,6 +160,12 @@ const Navigation = () => {
                   <Link to={route.route}>{route.label}</Link>
                 </MenuItem>
               ))}
+              <Button
+                onClick={handleLogOut}
+                sx={{color: 'black', display: 'block' }}
+              >
+                LogOut
+              </Button>
             </Menu>
           </Box>
         </Toolbar>

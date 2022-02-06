@@ -40,7 +40,7 @@ export default function SignIn() {
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState("");
 
-  const { logIn } = useUserAuth();
+  const { logIn, signInWithGoogle } = useUserAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -64,6 +64,17 @@ export default function SignIn() {
 
     }
   };
+
+  const handleSignInWithGoogle = async () => {
+      try{
+        
+        await signInWithGoogle();
+
+      } catch(err : any) {
+
+        console.log(err.message)
+      }
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -124,6 +135,16 @@ export default function SignIn() {
             >
               Sign In
             </Button>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              onClick={handleSignInWithGoogle}
+            >
+              SignIn With Google
+            </Button>
+            
             <Grid container>
               <Grid item xs>
                 <Link to={ROUTES.PASSWORD_FORGET}>

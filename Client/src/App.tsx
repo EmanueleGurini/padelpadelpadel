@@ -28,7 +28,7 @@ function App() {
   }
   return (
     <div>
-      {user && <h1>test</h1>}
+      {user && <Navigation />}
       <Routes>
         <Route path={ROUTES.SIGN_IN} element={<SignIn/>} />
         <Route path={ROUTES.LANDING} element={<SignIn/>} />
