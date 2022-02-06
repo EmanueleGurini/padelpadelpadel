@@ -23,9 +23,9 @@ function Copyright(props: any) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link to="/padelpadelpadel">
-        Your Website
-      </Link>{' '}
+      <a target='_blank' href="https://github.com/EmanueleGurini">
+        Made with ❤️ by Emanuele Gurini
+      </a>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -40,22 +40,17 @@ export default function SignIn() {
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState("");
 
-  const { logIn, signInWithGoogle } = useUserAuth();
+  const { logIn, signInWithGoogle, setPasswordReset } = useUserAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
 
     setError("");
     try{
 
       await logIn(email, password)
+
       navigate("/home");
 
     } catch (err : any) {
@@ -70,10 +65,24 @@ export default function SignIn() {
         
         await signInWithGoogle();
 
+        navigate("/home");
+
       } catch(err : any) {
 
         console.log(err.message)
       }
+  }
+
+  const handlePasswordReset = async () => {
+    try {
+
+      await setPasswordReset();
+
+    } catch(err : any) {
+
+      console.log(err.message)
+
+    }
   }
 
   return (
@@ -147,6 +156,7 @@ export default function SignIn() {
             
             <Grid container>
               <Grid item xs>
+                <Button onClick={handlePasswordReset}>forgot about dre</Button>
                 <Link to={ROUTES.PASSWORD_FORGET}>
                   Forgot password?
                 </Link>

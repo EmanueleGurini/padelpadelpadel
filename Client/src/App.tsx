@@ -21,6 +21,8 @@ import Admin from './components/Admin/Admin';
 import { ProtectedRoutes } from './components/ProtectedRoutes';
 import { useUserAuth } from './components/context/UseAuthContext';
 
+//TODO: Add comments 
+
 function App() {
   let { user } = useUserAuth();
   if(user){
@@ -32,7 +34,6 @@ function App() {
       <Routes>
         <Route path={ROUTES.SIGN_IN} element={<SignIn/>} />
         <Route path={ROUTES.LANDING} element={<SignIn/>} />
-        {/* <Route path={ROUTES.HOME} element={<Home />} /> */}
         <Route 
           path={ROUTES.HOME}
           element={
@@ -41,8 +42,16 @@ function App() {
             </ProtectedRoutes>
           } 
         />
-        <Route path={ROUTES.ACCOUNT} element={<Account />} />
-        <Route path={ROUTES.ADMIN} element={<Admin/>} />
+        <Route path={ROUTES.ACCOUNT} element={
+          <ProtectedRoutes>
+            <Account />
+          </ProtectedRoutes>  
+        }/>
+        <Route path={ROUTES.ADMIN} element={
+          <ProtectedRoutes>
+            <Admin />
+          </ProtectedRoutes> 
+        }/>
         <Route path={ROUTES.SIGN_UP} element={<SignUp/>} />
       </Routes>
     </div>

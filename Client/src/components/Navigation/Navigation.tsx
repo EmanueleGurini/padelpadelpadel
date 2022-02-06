@@ -17,10 +17,10 @@ import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 import { useUserAuth } from '../context/UseAuthContext';
 
-const menuRoutes = [
-  { route: ROUTES.SIGN_IN, label : 'Sign In' },
-  { route: ROUTES.LANDING, label : 'Landing' },
-  { route: ROUTES.HOME, label : 'Home' },
+const menuRoutes : any  = [
+  // { route: ROUTES.SIGN_IN, label : 'Sign In' },
+  // { route: ROUTES.LANDING, label : 'Landing' },
+  // { route: ROUTES.HOME, label : 'Home' },
 ]
 
 const userRoutes = [
@@ -121,15 +121,8 @@ const Navigation = () => {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {menuRoutes.map((route) => (
-              // <Button
-              //   key={page}
-              //   onClick={handleCloseNavMenu}
-              //   sx={{ my: 2, color: 'white', display: 'block' }}
-              // >
-              //   {page}
-              // </Button>
-              <Link to={route.route}>{route.label}</Link>
+            {menuRoutes?.map((route : any) => (
+              <Link to={route?.route}>{route.label}</Link>
             ))}
           </Box>
 
