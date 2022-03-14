@@ -21,40 +21,48 @@ import Admin from './components/Admin/Admin';
 import { ProtectedRoutes } from './components/ProtectedRoutes';
 import { useUserAuth } from './components/context/UseAuthContext';
 
-//TODO: Add comments 
 
 function App() {
   let { user } = useUserAuth();
   if(user){
     console.log('user:',user)
   }
+
   return (
-    <div>
-      {user && <Navigation />}
-      <Routes>
-        <Route path={ROUTES.SIGN_IN} element={<SignIn/>} />
-        <Route path={ROUTES.LANDING} element={<SignIn/>} />
-        <Route 
-          path={ROUTES.HOME}
-          element={
-            <ProtectedRoutes>
-              <Home />
-            </ProtectedRoutes>
-          } 
-        />
-        <Route path={ROUTES.ACCOUNT} element={
-          <ProtectedRoutes>
-            <Account />
-          </ProtectedRoutes>  
-        }/>
-        <Route path={ROUTES.ADMIN} element={
-          <ProtectedRoutes>
-            <Admin />
-          </ProtectedRoutes> 
-        }/>
-        <Route path={ROUTES.SIGN_UP} element={<SignUp/>} />
-      </Routes>
-    </div>
+
+      <div>
+        <h1>Hello, World!</h1>
+      </div>
+
+
+
+    // <div>
+    //   {user && <Navigation />}
+    //   <Routes>
+    //     <Route path={ROUTES.SIGN_IN} element={<SignIn/>} />
+    //     <Route path={ROUTES.LANDING} element={<SignIn/>} />
+    //     <Route
+    //       path={ROUTES.HOME}
+    //       element={
+    //         <ProtectedRoutes>
+    //           <Home />
+    //         </ProtectedRoutes>
+    //       }
+    //     />
+    //     <Route path={ROUTES.ACCOUNT} element={
+    //       <ProtectedRoutes>
+    //         <Account />
+    //       </ProtectedRoutes>
+    //     }/>
+    //     <Route path={ROUTES.ADMIN} element={
+    //       <ProtectedRoutes>
+    //         <Admin />
+    //       </ProtectedRoutes>
+    //     }/>
+    //     <Route path={ROUTES.SIGN_UP} element={<SignUp/>} />
+    //   </Routes>
+    // </div>
+
   );
 }
 
