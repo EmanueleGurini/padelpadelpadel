@@ -20,41 +20,53 @@ import Account from './components/Account/Account';
 import Admin from './components/Admin/Admin';
 import { ProtectedRoutes } from './components/ProtectedRoutes';
 import { useUserAuth } from './components/context/UseAuthContext';
-
-//TODO: Add comments 
+import { Typography } from '@mui/material';
+import StandardButton from "./components/Button";
 
 function App() {
   let { user } = useUserAuth();
   if(user){
     console.log('user:',user)
   }
+
   return (
-    <div>
-      {user && <Navigation />}
-      <Routes>
-        <Route path={ROUTES.SIGN_IN} element={<SignIn/>} />
-        <Route path={ROUTES.LANDING} element={<SignIn/>} />
-        <Route 
-          path={ROUTES.HOME}
-          element={
-            <ProtectedRoutes>
-              <Home />
-            </ProtectedRoutes>
-          } 
-        />
-        <Route path={ROUTES.ACCOUNT} element={
-          <ProtectedRoutes>
-            <Account />
-          </ProtectedRoutes>  
-        }/>
-        <Route path={ROUTES.ADMIN} element={
-          <ProtectedRoutes>
-            <Admin />
-          </ProtectedRoutes> 
-        }/>
-        <Route path={ROUTES.SIGN_UP} element={<SignUp/>} />
-      </Routes>
-    </div>
+
+      <div>
+          <StandardButton
+              label='button'
+              textTransform={'capitalize'}
+              onClick={(event) => alert(event)}/>
+      </div>
+
+
+
+    // <div>
+    //   {user && <Navigation />}
+    //   <Routes>
+    //     <Route path={ROUTES.SIGN_IN} element={<SignIn/>} />
+    //     <Route path={ROUTES.LANDING} element={<SignIn/>} />
+    //     <Route
+    //       path={ROUTES.HOME}
+    //       element={
+    //         <ProtectedRoutes>
+    //           <Home />
+    //         </ProtectedRoutes>
+    //       }
+    //     />
+    //     <Route path={ROUTES.ACCOUNT} element={
+    //       <ProtectedRoutes>
+    //         <Account />
+    //       </ProtectedRoutes>
+    //     }/>
+    //     <Route path={ROUTES.ADMIN} element={
+    //       <ProtectedRoutes>
+    //         <Admin />
+    //       </ProtectedRoutes>
+    //     }/>
+    //     <Route path={ROUTES.SIGN_UP} element={<SignUp/>} />
+    //   </Routes>
+    // </div>
+
   );
 }
 
