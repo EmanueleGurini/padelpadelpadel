@@ -10,6 +10,9 @@ export const theme = createTheme({
         secondary : {
           main : '#69DFE2',
         },
+        warning : {
+          main : '#c12400'
+        },
     },
     typography: {
 
