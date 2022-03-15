@@ -20,7 +20,7 @@ import Account from './components/Account/Account';
 import Admin from './components/Admin/Admin';
 import { ProtectedRoutes } from './components/ProtectedRoutes';
 import { useUserAuth } from './components/context/UseAuthContext';
-
+import { Typography } from '@mui/material';
 
 function App() {
   let { user } = useUserAuth();
@@ -32,6 +32,7 @@ function App() {
 
       <div>
         <h1 className=" font-bold underlin">Hello, World!</h1>
+        <Typography variant={'h2'} color="primary">Roboto?</Typography>
       </div>
 
 
