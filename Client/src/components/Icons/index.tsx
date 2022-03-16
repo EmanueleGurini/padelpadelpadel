@@ -28,6 +28,7 @@ export type availableGlyphs =
     | 'personBoth'
     | 'creditCard'
     | 'racquet'
+    | 'magnifyLens'
 
 export type IGlyphs = { [k in availableGlyphs]: JSX.Element }
 
@@ -41,7 +42,8 @@ export const glyphs: IGlyphs = {
     shower: SVGs.shower,
     personBoth: SVGs.personBoth,
     creditCard: SVGs.creditCard,
-    racquet: SVGs.racquet
+    racquet: SVGs.racquet,
+    magnifyLens: SVGs.magnifyLens
 }
 
 type WrapperProps = IProps

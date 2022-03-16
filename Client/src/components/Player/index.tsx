@@ -33,6 +33,7 @@ const Player = () => {
                     flexDirection : 'column',
                     justifyContent: 'center',
                 }}>
+                    <Box>
                     <PlayerPosition variant="h1">
                         1
                     </PlayerPosition>
@@ -42,6 +43,7 @@ const Player = () => {
                     <Typography sx={{position : 'relative', zIndex : '1'}}  variant="body1" component="p">
                         Pt. 13140
                     </Typography>
+                    </Box>
                     <FlagIcon code={'es'} size={''} />
                 </Grid>
             </Grid>

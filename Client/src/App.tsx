@@ -26,6 +26,7 @@ import StandardButton from "./components/Button";
 import Icon from "./components/Icons";
 import ImgAvatar from "./components/Avatar";
 import Player from "./components/Player";
+import SearchBar from "./components/SearchBar";
 
 function App() {
   let { user } = useUserAuth();
@@ -37,6 +38,7 @@ function App() {
 
       <div>
           <Player />
+          <SearchBar />
       </div>
 
 

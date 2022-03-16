@@ -8,6 +8,7 @@ import showerSVG from '../../assets/icons/shower-solid.svg'
 import personBothSVG from '../../assets/icons/person-booth-solid.svg'
 import creditCardSVG from '../../assets/icons/credit-card-solid.svg'
 import racquetSVG from '../../assets/icons/racquet-solid.svg'
+import magnifylensSVG from '../../assets/icons/magnifing-lens.svg'
 
 const imgStyle = {
     maxWidth: '100%',
@@ -23,7 +24,8 @@ const iconMap = {
     shower: <img alt="icon" style={imgStyle} src={showerSVG} />,
     personBoth: <img alt="icon" style={imgStyle} src={personBothSVG} />,
     creditCard : <img alt="icon" style={imgStyle} src={creditCardSVG} />,
-    racquet : <img alt="icon" style={imgStyle} src={racquetSVG} />
+    racquet : <img alt="icon" style={imgStyle} src={racquetSVG} />,
+    magnifyLens : <img alt="icon" style={imgStyle} src={magnifylensSVG} />
 }
 
 export default iconMap
