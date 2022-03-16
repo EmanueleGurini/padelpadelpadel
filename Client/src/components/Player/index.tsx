@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import ImgAvatar from "../Avatar";
 import avatar from '../../assets/images/avatar.jpg'
 import Typography from '@mui/material/Typography';
+import FlagIcon from "../Icons/FlagIcon/FlagIcon";
 
 const PlayerPosition = styled(Typography)`
   color : #052E53;
@@ -41,6 +42,7 @@ const Player = () => {
                     <Typography sx={{position : 'relative', zIndex : '1'}}  variant="body1" component="p">
                         Pt. 13140
                     </Typography>
+                    <FlagIcon code={'es'} size={''} />
                 </Grid>
             </Grid>
         </Box>
