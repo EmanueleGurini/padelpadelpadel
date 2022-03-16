@@ -22,6 +22,7 @@ import { ProtectedRoutes } from './components/ProtectedRoutes';
 import { useUserAuth } from './components/context/UseAuthContext';
 import { Typography } from '@mui/material';
 import StandardButton from "./components/Button";
+import Icon from "./components/Icons";
 
 function App() {
   let { user } = useUserAuth();
@@ -36,6 +37,8 @@ function App() {
               label='button'
               textTransform={'capitalize'}
               onClick={(event) => alert(event)}/>
+        <Icon glyph={'facebook'} size={'sm'} marginRight={'10px'} />
+
       </div>
 
 
