@@ -44,9 +44,10 @@ Users should be able to:
 - React.js
 - TypeScript
 - CSS Module
-- Material UI
-- Context
+- [MUI](https://mui.com/)
+- [React Context](https://it.reactjs.org/docs/context.html)
 - ClassNames
+- [React Flag Icon](https://www.npmjs.com/package/react-flag-icon-css)
 - Axios
 - Express
 - MySQL
