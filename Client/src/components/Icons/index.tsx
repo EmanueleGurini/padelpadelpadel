@@ -1,10 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 import SVGs from './svgs'
 import styled from '@emotion/styled';
 
 export interface IGlyphProps {
     glyph: string
 }
+
+//export type TSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | number
+//TODO : change size type inside IProps interface, below
 
 interface IProps {
     glyph: keyof IGlyphs

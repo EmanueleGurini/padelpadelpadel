@@ -42,7 +42,7 @@ export const theme = createTheme({
             }
         },
         h3 : {
-            fontSize: '22px',
+            fontSize: '18px',
             fontWeight: 700,
             lineHeight: '33px',
             '@media (max-width:600px)': {

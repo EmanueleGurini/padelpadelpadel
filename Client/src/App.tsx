@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.module.css';
+import avatar from './assets/images/avatar.jpg'
 
 import { 
   BrowserRouter as Router,
@@ -23,6 +24,8 @@ import { useUserAuth } from './components/context/UseAuthContext';
 import { Typography } from '@mui/material';
 import StandardButton from "./components/Button";
 import Icon from "./components/Icons";
+import ImgAvatar from "./components/Avatar";
+import Player from "./components/Player";
 
 function App() {
   let { user } = useUserAuth();
@@ -33,12 +36,7 @@ function App() {
   return (
 
       <div>
-          <StandardButton
-              label='button'
-              textTransform={'capitalize'}
-              onClick={(event) => alert(event)}/>
-        <Icon glyph={'facebook'} size={'sm'} marginRight={'10px'} />
-
+          <Player />
       </div>
 
 
