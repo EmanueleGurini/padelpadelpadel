@@ -9,6 +9,7 @@ import personBothSVG from '../../assets/icons/person-booth-solid.svg'
 import creditCardSVG from '../../assets/icons/credit-card-solid.svg'
 import racquetSVG from '../../assets/icons/racquet-solid.svg'
 import magnifylensSVG from '../../assets/icons/magnifing-lens.svg'
+import ballSVG from '../../assets/icons/ball.svg'
 
 const imgStyle = {
     maxWidth: '100%',
@@ -25,7 +26,8 @@ const iconMap = {
     personBoth: <img alt="icon" style={imgStyle} src={personBothSVG} />,
     creditCard : <img alt="icon" style={imgStyle} src={creditCardSVG} />,
     racquet : <img alt="icon" style={imgStyle} src={racquetSVG} />,
-    magnifyLens : <img alt="icon" style={imgStyle} src={magnifylensSVG} />
+    magnifyLens : <img alt="icon" style={imgStyle} src={magnifylensSVG} />,
+    ball : <img alt="icon" style={imgStyle} src={ballSVG} />
 }
 
 export default iconMap

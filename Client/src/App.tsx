@@ -27,6 +27,7 @@ import Icon from "./components/Icons";
 import ImgAvatar from "./components/Avatar";
 import Player from "./components/Player";
 import SearchBar from "./components/SearchBar";
+import BlogPost from "./components/BlogPost";
 
 function App() {
   let { user } = useUserAuth();
@@ -39,6 +40,7 @@ function App() {
       <div>
           <Player />
           <SearchBar />
+          <BlogPost />
       </div>
 
 
