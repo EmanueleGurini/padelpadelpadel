@@ -12,10 +12,10 @@ import * as ROUTES from './constants/routes'
 
 import Navigation from './components/Navigation/Navigation';
 
-import Home from './components/Home/Home';
+import Home from './pages/Home/Home';
 import Landing from './components/Landing/Landing';
-import SignUp from './components/SignUp/SignUp';
-import SignIn from './components/SignIn/SignIn';
+import SignUp from './pages/SignUp/SignUp';
+import SignIn from './pages/SignIn/SignIn';
 import PasswordForget from './components/PasswordForget/PasswordForget';
 import Account from './components/Account/Account';
 import Admin from './components/Admin/Admin';
@@ -28,6 +28,7 @@ import ImgAvatar from "./components/Avatar";
 import Player from "./components/Player";
 import SearchBar from "./components/SearchBar";
 import BlogPost from "./components/BlogPost";
+import Header from "./components/Header";
 
 function App() {
   let { user } = useUserAuth();
@@ -38,9 +39,12 @@ function App() {
   return (
 
       <div>
-          <Player />
-          <SearchBar />
-          <BlogPost />
+          <Header />
+          <Routes>
+              <Route path={ROUTES.HOME} element={<Home/>} />
+              <Route path={ROUTES.SIGN_IN} element={<SignIn/>} />
+              <Route path={ROUTES.SIGN_UP} element={<SignUp/>} />
+          </Routes>
       </div>
 
 
@@ -66,8 +70,7 @@ function App() {
     //     <Route path={ROUTES.ADMIN} element={
     //       <ProtectedRoutes>
     //         <Admin />
-    //       </ProtectedRoutes>
-    //     }/>
+    //       </ProtectedRoutes> //     }/>
     //     <Route path={ROUTES.SIGN_UP} element={<SignUp/>} />
     //   </Routes>
     // </div>
