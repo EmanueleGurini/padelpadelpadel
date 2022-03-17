@@ -86,7 +86,7 @@ const Header = () => {
 
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                        <IconButton
+{/*                        <IconButton
                             size="large"
                             aria-label="account of current user"
                             aria-controls="menu-appbar"
@@ -95,8 +95,8 @@ const Header = () => {
                             color="inherit"
                         >
                             <MenuIcon />
-                        </IconButton>
-                        <Menu
+                        </IconButton>*/}
+{/*                        <Menu
                             id="menu-appbar"
                             anchorEl={anchorElNav}
                             anchorOrigin={{
@@ -119,16 +119,16 @@ const Header = () => {
                                     <Typography textAlign="center">{page}</Typography>
                                 </MenuItem>
                             ))}
-                        </Menu>
+                        </Menu>*/}
                     </Box>
-                    <Typography
+{/*                    <Typography
                         variant="h6"
                         noWrap
                         component="div"
                         sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
                     >
                         LOGO
-                    </Typography>
+                    </Typography>*/}
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {menuRoutes?.map((route : any) => (
                             <Link to={route?.route}>{route.label}</Link>
@@ -136,6 +136,7 @@ const Header = () => {
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
+                        {!user?.uid && <>
                         <Link
                             style={{
                                 textDecoration : 'none',
@@ -157,11 +158,13 @@ const Header = () => {
                         >
                             Registrati
                         </Link>
-                        {/*<Tooltip title="Open settings">
+                        </> }
+                        { user?.uid && <>
+                        <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                             </IconButton>
-                        </Tooltip>*/}
+                        </Tooltip>
                         <Menu
                             sx={{ mt: '45px' }}
                             id="menu-appbar"
@@ -190,6 +193,7 @@ const Header = () => {
                                 LogOut
                             </Button>
                         </Menu>
+                        </> }
                     </Box>
                 </Toolbar>
             </Container>

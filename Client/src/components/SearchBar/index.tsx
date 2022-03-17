@@ -41,7 +41,8 @@ const SearchBar = () => {
            sx={{
                border: 'none',
                borderRadius: 50,
-               boxShadow: '8px 5px 13px -4px #787878',
+               //boxShadow: '8px 5px 13px -4px #787878',
+               bgcolor: '#ffffff',
                display: 'flex',
                alignItems: 'center',
                height: 70,

@@ -29,6 +29,7 @@ import Player from "./components/Player";
 import SearchBar from "./components/SearchBar";
 import BlogPost from "./components/BlogPost";
 import Header from "./components/Header";
+import Search from "./components/Search";
 
 function App() {
   let { user } = useUserAuth();
@@ -45,6 +46,7 @@ function App() {
               <Route path={ROUTES.SIGN_IN} element={<SignIn/>} />
               <Route path={ROUTES.SIGN_UP} element={<SignUp/>} />
           </Routes>
+          {user?.uid && <h1>{user.uid}</h1>}
       </div>
 
 
