@@ -51,7 +51,7 @@ export default function SignIn() {
 
       await logIn(email, password)
 
-      navigate("/home");
+      navigate("/");
 
     } catch (err : any) {
 
@@ -65,7 +65,7 @@ export default function SignIn() {
         
         await signInWithGoogle();
 
-        navigate("/home");
+        navigate("/");
 
       } catch(err : any) {
 

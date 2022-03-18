@@ -6,6 +6,7 @@ import {Simulate} from "react-dom/test-utils";
 //import IconButtonWrapper from "../IconButton";
 import Stack from "@mui/material/Stack";
 import IconButton from "@mui/material/IconButton";
+import {useNavigate, useParams} from "react-router-dom";
 
 const Input = styled.input`
   border: none;
@@ -20,15 +21,45 @@ const Input = styled.input`
 interface IIconButton {
     icon: any
     size: string
+    inputSearch: string
 }
 const IconButtonWrapper: React.FC<IIconButton> = (props: IIconButton) => {
+
+    const navigate = useNavigate();
+
+    let input = props.inputSearch;
+
+    const cleanInput = (inputValue : string) : string => {
+        let input = inputValue;
+        let i : number;
+
+        for(i = 0; i < input.length; i++) {
+            if (input[i] == ' ') {
+                input = input.slice(0, i) + '-' + input.slice(i+1, input.length);
+                i = 0;
+            }
+        }
+
+        return input
+    }
+
+
+    const sendToPage = () => {
+        let input = cleanInput(props.inputSearch);
+        navigate(input);
+    }
+
     return (
         <Stack direction="row" alignItems="center" spacing={1}>
-            <IconButton sx={{
-                backgroundColor: 'transparent',
-                '&:hover': {
+            <IconButton
+                sx={{
                     backgroundColor: 'transparent',
-                }}} aria-label={props.icon} size={'large'}>
+                    '&:hover': {
+                        backgroundColor: 'transparent',
+                    }
+                }} aria-label={props.icon} size={'large'}
+                onClick={sendToPage}
+            >
                 <Icon glyph={props.icon} size={props.size} />
             </IconButton>
         </Stack>
@@ -36,6 +67,13 @@ const IconButtonWrapper: React.FC<IIconButton> = (props: IIconButton) => {
 }
 
 const SearchBar = () => {
+
+   const [input, setInput] = React.useState<string>('');
+
+   const getInput = (event : React.ChangeEvent<HTMLInputElement>) => {
+       setInput(event.target.value);
+   }
+
    return (
        <Box
            sx={{
@@ -51,8 +89,8 @@ const SearchBar = () => {
                width: 770,
            }}
        >
-           <Input type={'text'}></Input>
-           <IconButtonWrapper icon={'magnifyLens'} size={'xl'}/>
+           <Input value={input} onChange={(event) => getInput(event)} type={'text'} />
+           <IconButtonWrapper inputSearch={input} icon={'magnifyLens'} size={'xl'}/>
 
        </Box>
    );

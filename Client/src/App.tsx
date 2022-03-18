@@ -30,6 +30,7 @@ import SearchBar from "./components/SearchBar";
 import BlogPost from "./components/BlogPost";
 import Header from "./components/Header";
 import Search from "./components/Search";
+import Courts from "./pages/Courts/Courts";
 
 function App() {
   let { user } = useUserAuth();
@@ -45,8 +46,8 @@ function App() {
               <Route path={ROUTES.HOME} element={<Home/>} />
               <Route path={ROUTES.SIGN_IN} element={<SignIn/>} />
               <Route path={ROUTES.SIGN_UP} element={<SignUp/>} />
+              <Route path={ROUTES.COURTS} element={<Courts />}/>
           </Routes>
-          {user?.uid && <h1>{user.uid}</h1>}
       </div>
 
 
