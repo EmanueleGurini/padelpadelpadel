@@ -1,21 +1,17 @@
 import React from 'react';
 import './App.module.css';
 import avatar from './assets/images/avatar.jpg'
-
-import { 
+import {
   BrowserRouter as Router,
   Route,
   Routes
 } from 'react-router-dom';
-
 import * as ROUTES from './constants/routes'
-
 import Navigation from './components/Navigation/Navigation';
-
-import Home from './components/Home/Home';
+import Home from './pages/Home/Home';
 import Landing from './components/Landing/Landing';
-import SignUp from './components/SignUp/SignUp';
-import SignIn from './components/SignIn/SignIn';
+import SignUp from './pages/SignUp/SignUp';
+import SignIn from './pages/SignIn/SignIn';
 import PasswordForget from './components/PasswordForget/PasswordForget';
 import Account from './components/Account/Account';
 import Admin from './components/Admin/Admin';
@@ -26,6 +22,12 @@ import StandardButton from "./components/Button";
 import Icon from "./components/Icons";
 import ImgAvatar from "./components/Avatar";
 import Player from "./components/Player";
+import SearchBar from "./components/SearchBar";
+import BlogPost from "./components/BlogPost";
+import Header from "./components/Header";
+import Search from "./components/Search";
+import Courts from "./pages/Courts/Courts";
+import Court from "./pages/Court";
 
 function App() {
   let { user } = useUserAuth();
@@ -36,7 +38,14 @@ function App() {
   return (
 
       <div>
-          <Player />
+          <Header />
+          <Routes>
+              <Route path={ROUTES.HOME} element={<Home/>} />
+              <Route path={ROUTES.SIGN_IN} element={<SignIn/>} />
+              <Route path={ROUTES.SIGN_UP} element={<SignUp/>} />
+              <Route path={ROUTES.COURTS} element={<Courts />}/>
+              <Route path={ROUTES.COURT} element={<Court />} />
+          </Routes>
       </div>
 
 
@@ -62,8 +71,7 @@ function App() {
     //     <Route path={ROUTES.ADMIN} element={
     //       <ProtectedRoutes>
     //         <Admin />
-    //       </ProtectedRoutes>
-    //     }/>
+    //       </ProtectedRoutes> //     }/>
     //     <Route path={ROUTES.SIGN_UP} element={<SignUp/>} />
     //   </Routes>
     // </div>
