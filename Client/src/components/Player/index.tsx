@@ -44,7 +44,7 @@ const Player = () => {
                         Pt. 13140
                     </Typography>
                     </Box>
-                    <FlagIcon code={'es'} size={''} />
+                    <FlagIcon code={'es'} size={'lg'} />
                 </Grid>
             </Grid>
         </Box>

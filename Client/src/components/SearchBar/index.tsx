@@ -2,8 +2,6 @@ import React from 'react'
 import Box from "@mui/material/Box";
 import Icon from "../Icons";
 import styled from "@emotion/styled";
-import {Simulate} from "react-dom/test-utils";
-//import IconButtonWrapper from "../IconButton";
 import Stack from "@mui/material/Stack";
 import IconButton from "@mui/material/IconButton";
 import {useNavigate, useParams} from "react-router-dom";
@@ -25,12 +23,10 @@ interface IIconButton {
 }
 const IconButtonWrapper: React.FC<IIconButton> = (props: IIconButton) => {
 
-    const navigate = useNavigate();
-
-    let input = props.inputSearch;
+    let navigate = useNavigate();
 
     const cleanInput = (inputValue : string) : string => {
-        let input = inputValue;
+        let input = inputValue.trim();
         let i : number;
 
         for(i = 0; i < input.length; i++) {
@@ -40,13 +36,12 @@ const IconButtonWrapper: React.FC<IIconButton> = (props: IIconButton) => {
             }
         }
 
-        return input
+        return input.toLowerCase()
     }
-
 
     const sendToPage = () => {
         let input = cleanInput(props.inputSearch);
-        navigate(input);
+        navigate("/" + input);
     }
 
     return (
@@ -79,7 +74,6 @@ const SearchBar = () => {
            sx={{
                border: 'none',
                borderRadius: 50,
-               //boxShadow: '8px 5px 13px -4px #787878',
                bgcolor: '#ffffff',
                display: 'flex',
                alignItems: 'center',

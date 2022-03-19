@@ -1,17 +1,13 @@
 import React from 'react';
 import './App.module.css';
 import avatar from './assets/images/avatar.jpg'
-
-import { 
+import {
   BrowserRouter as Router,
   Route,
   Routes
 } from 'react-router-dom';
-
 import * as ROUTES from './constants/routes'
-
 import Navigation from './components/Navigation/Navigation';
-
 import Home from './pages/Home/Home';
 import Landing from './components/Landing/Landing';
 import SignUp from './pages/SignUp/SignUp';
@@ -31,6 +27,7 @@ import BlogPost from "./components/BlogPost";
 import Header from "./components/Header";
 import Search from "./components/Search";
 import Courts from "./pages/Courts/Courts";
+import Court from "./pages/Court";
 
 function App() {
   let { user } = useUserAuth();
@@ -47,6 +44,7 @@ function App() {
               <Route path={ROUTES.SIGN_IN} element={<SignIn/>} />
               <Route path={ROUTES.SIGN_UP} element={<SignUp/>} />
               <Route path={ROUTES.COURTS} element={<Courts />}/>
+              <Route path={ROUTES.COURT} element={<Court />} />
           </Routes>
       </div>
 

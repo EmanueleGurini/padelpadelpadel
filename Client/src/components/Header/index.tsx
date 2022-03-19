@@ -183,9 +183,9 @@ const Header = () => {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            {userRoutes.map((route) => (
-                                <MenuItem>
-                                    <Link to={route.route}>{route.label}</Link>
+                            {userRoutes.map((route, index) => (
+                                <MenuItem key={'route-' + index}>
+                                    <Link  to={route.route}>{route.label}</Link>
                                 </MenuItem>
                             ))}
                             <Button

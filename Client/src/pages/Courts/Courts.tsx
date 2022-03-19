@@ -1,6 +1,11 @@
 import React from 'react'
 import { ICourt } from './model'
 import {useParams} from "react-router-dom";
+import {CssBaseline, Typography} from "@mui/material";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import BlogPost from "../../components/BlogPost";
+import SearchMin from "../../components/SearchMin";
 
 const Courts : React.FC<{}> = () => {
 
@@ -13,20 +18,42 @@ const Courts : React.FC<{}> = () => {
     }, [])
 
     const params = useParams()
-    console.log(params.city);
 
+    const restoreOutPutParams = (inputValue : string) : string => {
+        let input = inputValue.trim();
+        let i : number;
 
-   return (
-      <>
-         <h1>{params.city}</h1>
-          {
-              courts.map(function(court) {
-                 return (
-                     <img width={150} src={court.url} alt={court.title} key={'COURT-' + court.id}/>
-                 );
-              })
-          }
-      </>
+        for(i = 0; i < input.length; i++) {
+            if (input[i] == '-') {
+                input = input.slice(0, i) + ' ' + input.slice(i+1, input.length);
+                i = 0;
+            }
+        }
+
+        return input.toLowerCase()
+    }
+
+    let city = params?.city ? restoreOutPutParams(params.city) : ''
+
+    return (
+        <React.Fragment>
+            <SearchMin />
+                      <CssBaseline />
+                      <Container sx={{pt: 7}} maxWidth="lg">
+                          <Typography variant={'h1'} component={'h1'} sx={{color: 'primary.main', textTransform: 'uppercase'}}>campi a {city}</Typography>
+                          <Box sx={{display: 'flex', flexWrap: 'wrap'}} >
+                          {
+                              courts.map(function (court) {
+                                  return (
+                                      <React.Fragment key={'court' + court.id}>
+                                        <BlogPost id={court.id.toString()} title={court.title} imgLink={court.url} link={court.url}/>
+                                      </React.Fragment>
+                                  )
+                              })
+                          }
+                          </Box>
+                      </Container>
+                  </React.Fragment>
    );
 }
 
